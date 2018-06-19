@@ -265,5 +265,7 @@ setMethod(f = "mangoCorrection", def = function(lo, FDR = 1, PValue = 1, nbins =
     idxP <- df$P <= PValue
     idxA <- idxF & idxP
     
+    navals = which(is.na(idxA))
+    idxA[navals] = FALSE
     return(subsetLoops(lo, idxA))
 })
